@@ -1,0 +1,5 @@
+# Do to copyright issuses, I don’t include PDFs
+/Articles/*.pdf
+/Articles/_old/*.pdf
+/Articles/*.alias
+/Articles/_old/*.alias
