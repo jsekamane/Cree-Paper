@@ -3,3 +3,6 @@
 /Articles/_old/*.pdf
 /Articles/*.alias
 /Articles/_old/*.alias
+
+# Do not include administrative school documents
+_Administrative/**
