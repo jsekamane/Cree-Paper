@@ -6,3 +6,12 @@ Articles/_old/*.alias
 
 # Do not include administrative school documents
 _Administrative/**
+
+# Do not include latex support files
+Latex/*.aux
+Latex/*.bbl
+Latex/*.blg
+Latex/*.log
+Latex/*.out
+Latex/*.spl
+Latex/*.gz
