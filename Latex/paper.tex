@@ -143,9 +143,13 @@ Both stability aspects require thorough testing and running countless experiment
 
 With numerous interconnected and simultaneously used devices, eventually a device will malfunction or the network will suffer a temporary disturbance. \Cree handles these types of errors by allowing subjects that briefly disconnects, to reconnect and continue the experiment. Disconnects and reconnects are logged, so the researcher can later determine if it significantly impacted the results in the current stage of the experiment. \Cree does not reconnect subjects after lengthy disconnects, since this would hold up the entire experiment and adversely impact the waiting time of the other participating subjects. In these instances the experiment proceeds without the disconnected subject.
 
-If subjects attempt to abort the experiment untimely, \Cree displays a warning message. The occurrence of these warning messages are logged. In addition \Cree logs when the subject's web browsers is out of focus\footnotemark[8] -- this is a proxy measure for inattention. The figure below plots the session of one subject. The figure includes connection, disconnection, the stages of the experiment, and periods of inattention (areas shaded red).
+If subjects attempt to abort the experiment untimely, \Cree displays a warning message. The occurrence of these warning messages are logged. In addition \Cree logs when the subject's web browsers is out of focus\footnotemark[8] -- this is a proxy measure for inattention. The figure below plots the session of one subject. The figure includes connection, disconnection, the stages of the experiment, and periods of inattention (areas shaded red). The full lines mark the beginning of a new stage. The dotted lines are where the subject waits for the other participant.
 
-{\color{red}[FIG of inattention]}
+\begin{figure}[h!]
+  \caption{Example of a session timeline of a subject}
+  \centering
+    \includegraphics[width=\textwidth]{figures/example_session}
+\end{figure}
 
 \footnotetext[8]{ie. when the subject is using a different tab in the web browser, when the web browser is minimised or fully obscured by another application, or when the device enters its power saving or screensaver mode (lock screen on smartphones). Source: \url{http://www.w3.org/TR/page-visibility/}}
 
