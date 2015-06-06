@@ -50,7 +50,7 @@ In addition there is a vibrant ecosystem surrounding these web technologies. \Cr
 
 Technological advances opens up a new path, however the path is not without obstacles. This paper explores and discusses how to handle these obstacles. Some obstacles are alleviated through appropriate technical design of the toolbox. Other obstacles require actions taken by the researcher.
 
-{\color{red}... Explain why you repeatedly refer to studies on Mechanical Turk ...}
+While this paper deals with internet experiments in general, it continuously refer to studies that use subjects from Amazon's \emph{Mechanical Turk}. This is not to highlight or promote the use of \emph{Mechanical Turk}, it is simply because the bulk of internet experiments use this system.
 
 \section{Requirements}
 \label{S:Requirements}
@@ -205,13 +205,39 @@ There is yet no research on how or if results are influenced by the devices used
 
 The researcher can control for differences among subjects post hoc. \citet[p. 121]{Chandler_Mueller_Paolacci_2014} are strongly critical of this approach. They estimate that more than a third of all peer-review papers using \emph{Mechanical Turk} drop subjects post hoc for one reason or another. They describe this an \emph{``arbitrary data-cleaning strategy''} and that researchers are \emph{``too eager to exclude workers post hoc''}. They propose a less subjective approach where researchers adjust their selection process, so subjects are excluded a priori. In particular they propose using prescreening surveys that elicit demographic characteristics, psychological attributes, attentiveness, and ability to solve tasks that are crucial to completing the actual experiment. \Cree does not include a prescreening system to manage the pool of subjects. It offers researchers only a few basic options to exclude subjects a priori. The researcher can choose to allow only one subject per IP address, can provide a list of IP addresses to exclude, and can provide a list of devices to exclude. The researcher will need to employ a third-party prescreening system, for more elaborate a priori exclusion criteria.
 
+
 \section{Designing experiments}
 \label{S:Designing}
+
+\subsection{Installation}
+% How is Cree installed?
+
+Cree is installed on a computer with Node.js using its package manager (\emph{npm}). To install Cree open \emph{Command Prompt} on Windows, or \emph{Terminal} on Mac/Linux, enter \texttt{npm~install~Cree} and press enter.
+
+\subsection{Multiple versions}
+% How can Cree run on smart-phones, tablets, and computers all at the same time?
+
+The subjects participate in a Cree experiment through a web browser. A Cree experiment consists of HTML pages, that the browsers renders and displays. It is not necessary to build separate versions for respectively smart-phones, tablets and computers. There is only one version and the web browser scales every page so it matches the respective screen sizes. 
+
+\subsection{Ease}
+% Is it easy to build and change experiments in Cree? Does Cree require programming skills?
+
+There are some misconception that I would like to address. 
+\begin{enumerate}
+\item The main purpose of a toolbox is not to offer comfort or convenience to researchers, but to offer the necessary tools. Convenience is secondary.
+\item There is a trade-off between usability and flexibility. Every improvement in usability is based on a judgement call by the programmer. Usability is improved when the set of possible choices are reduced, this in turn reduces flexibility. Thus a toolbox should be evaluated on its ability to balance the trade-off between usability and flexibility. 
+\item All toolboxes essentially require some programming skills. It is true that some toolboxes allow researchers to run preprogrammed experiments, without any additional programming. But once the researcher starts building own experiments, or significantly modifies existing experiments, programming is unavoidable. A programming language is nothing more than human logic and instructions in a machine interpretable format, and this is why programming is unavoidable when researchers build logic into their experiments.
+\end{enumerate}
+
+The guiding principle behind \Cree is to offer a solid and highly flexible foundation, that gives researchers the necessary tools to carry out their research, irrespective of location and available devices. The current version of \Cree does require some programming skills. An interface -- providing convenience when running preprogrammed experiments and when implementing minor changes -- could be added on top of this foundation in a future version. The interface would be a supplement. But with the foundation in order, this would not be at the expense of the general flexibility of \Cree. \Cree relies on JavaScript to build logic into experiments. Because JavaScript is a general-purpose programming language and widely used, many of the procedures necessary to build more complex experiments are already easily available. Thereby avoiding the trap noted by \citet[p. 177]{Fischbacher_2007} when discussing the current limitations of \emph{z-tree}; \emph{``there are situations in which programming is unnecessarily complicated, since z-Tree neither knows procedures nor complex data types ... One of the planned future steps in the development of z-Tree is thus an extension of the programming language to make programming of more complex experiments easier''}. \Cree uses the CSS framework \emph{Bootstrap}, which insures that pages scale seamlessly across small and big screens. In addition it insures that pages look identical across different browsers and devices, for given screen sizes. Since Bootstrap handles all this, knowledge of CSS is not need to build elegant experiments that have a consistent look across devices. Some knowledge of HTML is  helpful, but not required since the researcher can use third-party drag and drop tools such as \emph{LayoutIt!} or \emph{Jetstrap} to build pages that work with \emph{Bootstrap}\footnotemark[8].
+
+\footnotetext[8]{Source: \url{https://jetstrap.com}. Source: \url{http://www.layoutit.com}}
+
 
 \section{Conclusion}
 \label{S:Conclusion}
 
-This paper introduces \Cree, a modern toolbox to design and conduct economic experiments. \Cree places very few restrictions on the devices facing subjects, thus relinquishing economic experiments from the grips of the computer-equipped laboratory. In turn economic experiments design in \Cree can also run in \emph{extra-laboratory} settings such as classrooms, workplaces and over the internet. While \Cree provides researchers with new tools and opportunities, it also opens up for new issues and obstacles. This paper shows how many of these obstacles are solve in the technical design of \Cree, while a few obstacles remain that require action by the researcher. The main remaining issue facing researchers when transferring from a laboratory setting to an \emph{extra-laboratory} setting is not subject attention, subject compensation, nor the quality of the results. It is recruitment and specifically the selection process. If the experiment is designed appropriately the first set of issues resolve themselves. However the method used to recruit subjects, especially if subjects self-select into the experiment, may change the mindset, behaviour, validity and ultimately the results of the experiment. The selection process requires a third-party prescreening system to manage the pool of subjects. And it may require running prescreen surveys to appropriately exclude subjects on a priori grounds. The problems surrounding the selection process are not exclusive to internet experiments, just more prevalent in this setting.
+This paper introduces \Cree, a modern toolbox to design and conduct economic experiments. \Cree places very few restrictions on the devices facing subjects, thus relinquishing economic experiments from the grips of the computer-equipped laboratory. In turn economic experiments designed in \Cree can also run in \emph{extra-laboratory} settings such as classrooms, workplaces and over the internet. While \Cree provides researchers with new tools and opportunities, it also opens up for new issues and obstacles. This paper shows how many of these obstacles are solve in the technical design of \Cree, while a few obstacles remain that require action by the researcher. The main remaining issue facing researchers when transferring from a laboratory setting to an \emph{extra-laboratory} setting is not subject attention, subject compensation, nor the quality of the results. It is recruitment and specifically the selection process. If the experiment is designed appropriately the first set of issues resolve themselves. However the method used to recruit subjects, especially if subjects self-select into the experiment, may change the mindset, behaviour, validity and ultimately the results of the experiment. The selection process requires a third-party prescreening system to manage the pool of subjects. And it may require running prescreen surveys to appropriately exclude subjects on a priori grounds. The problems surrounding the selection process are not exclusive to internet experiments, just more prevalent in this setting.
 
 \newpage
 
