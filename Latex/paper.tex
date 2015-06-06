@@ -58,7 +58,7 @@ Technological advances opens up a new path, however the path is not without obst
 \subsection{System requirements}
 % What are the system requirements for \Cree?
 
-\Cree requires a server, ie. any computer with \emph{Node.js} installed\footnotemark[1]. \Cree has several dependencies -- because it is built on general-purpose software libraries -- however all of these dependencies are automatically installed, or come pre-bundled, with \Cree. The server will need to be connected to the devices used by the subject, either through the internet or though a local network (eg. WiFi). 
+\Cree requires a server, ie. any computer with \emph{Node.js} installed. \Cree has several dependencies -- because it is built on general-purpose software libraries -- however all of these dependencies are automatically installed, or come pre-bundled, with \Cree. The server will need to be connected to the devices used by the subject, either through the internet or though a local network (eg. WiFi). 
 
 \begin{figure}[h!]
   \caption{Schematic overview of the network setup with server and clients}
@@ -66,11 +66,9 @@ Technological advances opens up a new path, however the path is not without obst
     \includegraphics[width=\textwidth]{figures/setup}
 \end{figure}
 
-Subjects access \Cree experiments though an web browser. Any modern web browser will suffice\footnotemark[2], which means that subjects can participate in experiments using smart-phones, tablets, or any computer (Windows, Mac, Linux). Every subject will need a device. The researcher can choose to provide devices, or have subjects use their own personal devices.
+Subjects access \Cree experiments though an web browser. Any modern web browser will suffice\footnotemark[1], which means that subjects can participate in experiments using smart-phones, tablets, or any computer (Windows, Mac, Linux). Every subject will need a device. The researcher can choose to provide devices, or have subjects use their own personal devices.
 
-\footnotetext[1]{Node.js is easily installed from \url{http://nodejs.org}.}
-
-\footnotetext[2]{A modern web browser is either: IE version 9+, Chrome current version, Firefox current version, OSX Safari version 5.1+, Opera version 12.1+, iOS Safari version 6.1+, or Android Browser version 4.0+. The browser must allow JavaScript, which all browsers due by default. \Cree automatically check that these requirements are met, before the subject is allowed to enter the experiment.}
+\footnotetext[1]{A modern web browser is either: IE version 9+, Chrome current version, Firefox current version, OSX Safari version 5.1+, Opera version 12.1+, iOS Safari version 6.1+, or Android Browser version 4.0+. The browser must allow JavaScript, which all browsers due by default. \Cree automatically check that these requirements are met, before the subject is allowed to enter the experiment.}
 
 \subsection{Alternative toolboxes}
 \label{SS:Alternatives}
@@ -89,15 +87,15 @@ Subjects access \Cree experiments though an web browser. Any modern web browser 
 
 Toolboxes, such as \emph{z-Tree}, are applications. They are written for a specific operating system, and will only run on that specific operating system. All toolboxes in this category requires Microsoft Windows. These applications are not easily ported to other computer operating systems. And they will require a complete restructuring -- focused on optimising screen sizes and battery life -- if they are every to run on smart-phones or tablets. In addition, applications will have to be downloaded (and installed) on the computer facing subjects, before they can participate in experiments. This requirement hinders subjects from using their personal devices.
 
-The second category contains toolboxes written in \emph{Python}. Python is platform independent, so these toolboxes can run on several operating systems, but they require that Python is installed on the equipment facing subjects\footnotemark[3]. These toolboxes also require downloading software.
+The second category contains toolboxes written in \emph{Python}. Python is platform independent, so these toolboxes can run on several operating systems, but they require that Python is installed on the equipment facing subjects\footnotemark[2]. These toolboxes also require downloading software.
 
-\footnotetext[3]{Python can be packaged into stand-alone applications. These stand-alone applications can run on equipment where Python is not installed.}
+\footnotetext[2]{Python can be packaged into stand-alone applications. These stand-alone applications can run on equipment where Python is not installed.}
 
-Toolboxes in the third category are written in \emph{Java}. These are less restrictive, since subjects can participate in experiments though a web browser that has the Java-plugin. Thus there is no need to predownload or preinstall software on the equipment facing subjects. While the Java-plugin is widely distributed, it is not universal\footnotemark[4]. And increasing concerns regarding security issues with the Java-plugin has lead browsers manufactures to implement various warnings and hindrances\footnotemark[5]. 
+Toolboxes in the third category are written in \emph{Java}. These are less restrictive, since subjects can participate in experiments though a web browser that has the Java-plugin. Thus there is no need to predownload or preinstall software on the equipment facing subjects. While the Java-plugin is widely distributed, it is not universal\footnotemark[3]. And increasing concerns regarding security issues with the Java-plugin has lead browsers manufactures to implement various warnings and hindrances\footnotemark[4]. 
 
-\footnotetext[4]{A Millward Brown survey from 2011 found a penetration rate of 73\% on PCs in mature markets. Source: \url{http://www.adobe.com/mena_en/products/flashplatformruntimes/statistics.html}. This is also mimicked on the server-side with only 0.1\% of websites using Java. Source: \url{http://w3techs.com/technologies/overview/client_side_language/all}. The Java-plugin is not supported on iOS nor Android. Source: \url{http://www.java.com/en/download/faq/java_mobile.xml}.}
+\footnotetext[3]{A Millward Brown survey from 2011 found a penetration rate of 73\% on PCs in mature markets. Source: \url{http://www.adobe.com/mena_en/products/flashplatformruntimes/statistics.html}. This is also mimicked on the server-side with only 0.1\% of websites using Java. Source: \url{http://w3techs.com/technologies/overview/client_side_language/all}. The Java-plugin is not supported on iOS nor Android. Source: \url{http://www.java.com/en/download/faq/java_mobile.xml}.}
  
-\footnotetext[5]{Eg. due to security concerns by default the Java-plugin is disabled in Google Chrome version 42 (released April 2015). Source: \url{https://www.java.com/en/download/faq/chrome.xml}.}
+\footnotetext[4]{Eg. due to security concerns by default the Java-plugin is disabled in Google Chrome version 42 (released April 2015). Source: \url{https://www.java.com/en/download/faq/chrome.xml}.}
 
 The fourth category of toolboxes run natively in the web browser, without the need for any browser plug-ins or predownloaded software. These toolboxes place the same low restrictions on the equipment facing subjects as \Cree. However, none of these toolboxes currently support simultaneous real-time interaction between subjects -- ie. it is impossible to design experiments where subjects continuously provide input, while continuously and simultaneously receives feedback from the other subjects. Some toolboxes support sequential decision making, while others completely lack interaction among subjects.
 
@@ -125,9 +123,9 @@ Internet experiments in general and \emph{extra-laboratory} experiments, are lik
 \subsection{Coordinated joining}
 % How do subjects join an experiment and how to coordinate subjects?
 
-When the researcher initiates the experiment, \Cree returns the URL adresses, that subjects use to join the experiment. Two URLs are displayed, since subjects can participate over the internet and through the local network. URLs should be distributed accordingly. The researcher distributes the URL to participants (via printed hand-outs, e-mail, third-party recruitment system, etc). Subjects join the experiment simply by clicking a link, or by typing the URL into their web browser. \Cree automatically tests if the server can connect to the internet, if this fails then \Cree only displays the local network URL\footnotemark[6]. 
+When the researcher initiates the experiment, \Cree returns the URL adresses, that subjects use to join the experiment. Two URLs are displayed, since subjects can participate over the internet and through the local network. URLs should be distributed accordingly. The researcher distributes the URL to participants (via printed hand-outs, e-mail, third-party recruitment system, etc). Subjects join the experiment simply by clicking a link, or by typing the URL into their web browser. \Cree automatically tests if the server can connect to the internet, if this fails then \Cree only displays the local network URL\footnotemark[5]. 
 
-\footnotetext[6]{\Cree does not test whether access to the server is blocked by a firewall, nor if the two required ports are open.}
+\footnotetext[5]{\Cree does not test whether access to the server is blocked by a firewall, nor if the two required ports are open.}
 
 Besides recruitment and distribution of adresses, there is coordination. In experiments where subjects interact with each other in real-time, the researcher must coordinate subjects so they start the experiment simultaneously. The researcher can specify that \Cree should wait for sufficiently many subjects to join, before starting the session. Ie. the first subject joining will be put on hold, until the last required subject joins. Subjects have limited patience, so the researcher needs to coordinate subjects on a very narrow interval of only a few minutes. There are a couple of different approaches that the researcher can take here. In laboratory experiments it is common to invite more participants than needed for a given session (due to ``no shows''). This option is also possible in \Cree, since \Cree turns down subjects once a session is filled. There is a semi-continues option that expands the interval. Fore instance in the \emph{Prisoner's dilemma} it is common with only two subjects interacting with each other. So instead of waiting for all subjects to join the session, the semi-continuous option will start whenever two new subjects join. However with this option the researcher losses the ability to randomise subjects, ie. pair a subject with another. The lack of randomisation may lead to reciprocity among subjects. There is a third fully-continuous option, where the server simply restarts the experiment after each session. This option can be used in conjunction with fewer subjects per session. If subjects show up late for the first session, they wait for the session to end, whereafter they can join the second session, and so on. All of this continues until the researcher manually stops the experiment.
 
@@ -138,13 +136,13 @@ A main priority for researchers is that the software they use to run experiments
 
 There are two stability objectives; The first is eliminating software bugs, ie. faults causing the software to preform in an unintended or unanticipated manner, and due to the error of the programmer. The second is sufficient error handling, ie. implementing fallbacks to deal with mishaps, so crashes are mitigated, or at the very least an emergency landing is preformed.
 
-Both stability aspects require thorough testing and running countless experiments using the software. \Cree does not have a 20-year track record like \emph{z-Tree}, but nor is it build from scratch. The software libraries and dependencies on which \Cree is build, have been tested intensively by their respective communities. Some libraries are used daily across millions of websites\footnotemark[7]. This speaks volumes to the infrequency of software bugs in the foundation of \Cree.
+Both stability aspects require thorough testing and running countless experiments using the software. \Cree does not have a 20-year track record like \emph{z-Tree}, but nor is it build from scratch. The software libraries and dependencies on which \Cree is build, have been tested intensively by their respective communities. Some libraries are used daily across millions of websites\footnotemark[6]. This speaks volumes to the infrequency of software bugs in the foundation of \Cree.
 
-\footnotetext[7]{The JavaScript library \emph{jQuery} is used on 64.4\% of monitored websites. There is no statistics on the \emph{Bootstrap} CSS library, but its complementary JavaScript library is used on 7.7\% of websites. Source: \url{http://w3techs.com/technologies/overview/javascript_library/all}. While \emph{Node.js} is used as web-server on 0.1\% of monitored websites. Source: \url{http://w3techs.com/technologies/overview/web_server/all}.}
+\footnotetext[6]{The JavaScript library \emph{jQuery} is used on 64.4\% of monitored websites. There is no statistics on the \emph{Bootstrap} CSS library, but its complementary JavaScript library is used on 7.7\% of websites. Source: \url{http://w3techs.com/technologies/overview/javascript_library/all}. While \emph{Node.js} is used as web-server on 0.1\% of monitored websites. Source: \url{http://w3techs.com/technologies/overview/web_server/all}.}
 
 With numerous interconnected and simultaneously used devices, eventually a device will malfunction or the network will suffer a temporary disturbance. \Cree handles these types of errors by allowing subjects that briefly disconnects, to reconnect and continue the experiment. Disconnects and reconnects are logged, so the researcher can later determine if it significantly impacted the results in the current stage of the experiment. \Cree does not reconnect subjects after lengthy disconnects, since this would hold up the entire experiment and adversely impact the waiting time of the other participating subjects. In these instances the experiment proceeds without the disconnected subject.
 
-If subjects attempt to abort the experiment untimely, \Cree displays a warning message. The occurrence of these warning messages are logged. In addition \Cree logs when the subject's web browsers is out of focus\footnotemark[8] -- this is a proxy measure for inattention. The figure below plots the session of one subject. The figure includes connection, disconnection, the stages of the experiment, and periods of inattention (areas shaded red). The full lines mark the beginning of a new stage. The dotted lines are where the subject waits for the other participant.
+If subjects attempt to abort the experiment untimely, \Cree displays a warning message. The occurrence of these warning messages are logged. In addition \Cree logs when the subject's web browsers is out of focus\footnotemark[7] -- this is a proxy measure for inattention. The figure below plots the session of one subject. The figure includes connection, disconnection, the stages of the experiment, and periods of inattention (areas shaded red). The full lines mark the beginning of a new stage. The dotted lines are where the subject waits for the other participant.
 
 \begin{figure}[h!]
   \caption{Example of a session timeline of a subject}
@@ -152,7 +150,7 @@ If subjects attempt to abort the experiment untimely, \Cree displays a warning m
     \includegraphics[width=\textwidth]{figures/example_session}
 \end{figure}
 
-\footnotetext[8]{ie. when the subject is using a different tab in the web browser, when the web browser is minimised or fully obscured by another application, or when the device enters its power saving or screensaver mode (lock screen on smartphones). Source: \url{http://www.w3.org/TR/page-visibility/}}
+\footnotetext[7]{ie. when the subject is using a different tab in the web browser, when the web browser is minimised or fully obscured by another application, or when the device enters its power saving or screensaver mode (lock screen on smartphones). Source: \url{http://www.w3.org/TR/page-visibility/}}
 
 \subsection{Duration and supervision}
 % Can you run hour-long experiments over the internet (eg. after how long to unsupervised subjects stop paying attention)?
@@ -212,6 +210,28 @@ The researcher can control for differences among subjects post hoc. \citet[p. 12
 
 \section{Conclusion}
 \label{S:Conclusion}
+
+This paper introduces \Cree, a modern toolbox to design and conduct economic experiments. \Cree places very few restrictions on the devices facing subjects, thus relinquishing economic experiments from the grips of the computer-equipped laboratory. In turn economic experiments design in \Cree can also run in \emph{extra-laboratory} settings such as classrooms, workplaces and over the internet. While \Cree provides researchers with new tools and opportunities, it also opens up for new issues and obstacles. This paper shows how many of these obstacles are solve in the technical design of \Cree, while a few obstacles remain that require action by the researcher. The main remaining issue facing researchers when transferring from a laboratory setting to an \emph{extra-laboratory} setting is not subject attention, subject compensation, nor the quality of the results. It is recruitment and specifically the selection process. If the experiment is designed appropriately the first set of issues resolve themselves. However the method used to recruit subjects, especially if subjects self-select into the experiment, may change the mindset, behaviour, validity and ultimately the results of the experiment. The selection process requires a third-party prescreening system to manage the pool of subjects. And it may require running prescreen surveys to appropriately exclude subjects on a priori grounds. The problems surrounding the selection process are not exclusive to internet experiments, just more prevalent in this setting.
+
+\newpage
+
+% Appendix
+\appendix
+
+\section{List of \Cree dependencies}
+
+\begin{description}
+  \item[Node.js:] ... Node.js is easily installed from \url{http://nodejs.org} ...
+  \item[{\color{red} X:}] ... restarting Node.js process ...
+  \item[clock:] ...
+  \item[shuffle:] ...
+  \item[fs:] ...
+  \item[{\color{red} Y:}] ... get public url ...
+  \item[Bootstrap:] ...
+  \item[jQuery:] ...
+  \item[{\color{red} jquery.pagevisibility:}] ...
+  \item[D3.js:] ...
+\end{description}
 
 \newpage
 
