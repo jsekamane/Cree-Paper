@@ -26,7 +26,6 @@
 \title{\emph{Cree}: A modern toolbox for readymade economic experiments}
 \author{Jonas K. Sekamane}
 \journal{Supervised by Ulrik Haagen Nielsen.}
-\address{{\color{red} First draft}}
 
 \begin{abstract}
 {\color{red} ...}
@@ -121,6 +120,7 @@ Internet experiments in general and \emph{extra-laboratory} experiments, are lik
 \Cree does not include a prescreening system to manage the pool of subjects, so the researcher handles recruitment manually. The selection process is crucial, and researchers should carefully consider the degree to which subjects can self-select into experiments, since this may invalidate the underlying assumption of naïve subjects. \Cree automatically logs referrals from other websites. And researchers can restrict \Cree so it only accepts one subject per IP address, creating additional protection against subjects participating multiple times in the same experimental session.
 
 \subsection{Coordinated joining}
+\label{SS:joining}
 % How do subjects join an experiment and how to coordinate subjects?
 
 When the researcher initiates the experiment, \Cree returns the URL addresses that subjects use to join the experiment. Two URLs are displayed, since subjects can participate over the internet and through the local network. URLs should be distributed accordingly. The researcher distributes the URL to participants (via printed hand-outs, e-mail, third-party recruitment system, etc). Subjects join the experiment simply by clicking a link, or by typing the URL into their web browser. \Cree automatically tests if the server can connect to the internet, if this fails then \Cree only displays the local network URL\footnotemark[5]. 
@@ -246,17 +246,20 @@ This paper introduces \Cree, a modern toolbox to design and conduct economic exp
 
 \section{List of \Cree dependencies}
 
+There is a vibrant ecosystem and many general-purpose software libraries that surround the three web technologies HTML, CSS and JavaScript. \Cree exploits this ecosystem and takes full advantage of the software libraries that exist. This provides stability, flexibility, and makes it easy to set up and run economic experiments. This section briefly describes each of the software libraries, which \Cree depends upon.
+
 \begin{description}
-  \item[Node.js:] ... Node.js is easily installed from \url{http://nodejs.org} ...
-  \item[{\color{red} X:}] ... restarting Node.js process ...
-  \item[clock:] ...
-  \item[shuffle:] ...
-  \item[fs:] ...
-  \item[{\color{red} Y:}] ... get public url ...
-  \item[Bootstrap:] ...
-  \item[jQuery:] ...
-  \item[{\color{red} jquery.pagevisibility:}] ...
-  \item[D3.js:] ...
+  \item[Node.js:] \Cree uses the software library \emph{Node.js} to run the server and control the experiment. \emph{Node.js} is build on Chrome's JavaScript engine and can thus run JavaScript on the server. Ie. \Cree uses the programming language JavaScript to introduce logic, both at the server level, and at the web browser level. The asynchronous architecture of \emph{Node.js} gives \Cree the flexibility to handle real-time events. Node.js is easily installed from \url{http://nodejs.org}, and comes pre bundled with the package manager \emph{npm}.
+  \item[cloak:] This \emph{Node.js} module or package aims to provide a network layer to HTML games. \Cree uses \emph{cloak} to handle all networking issues, e.g. connecting subjects, queuing subjects, sending messages back and forth between subjects, etc. See \url{http://incompl.github.io/cloak/}
+  \item[knuth-shuffle:] This is the \emph{Node.js} module that \Cree uses to randomise subjects across groups, roles and treatments respectively. The underlying algorithm is known as the \emph{Fisher–Yates shuffle} or the \emph{Knuth shuffle}. And the algorithm is unbiased. See \url{https://github.com/coolaj86/knuth-shuffle}
+  \item[connect:] This is the \emph{Node.js} module that \Cree uses to serve web pages to subjects. See \url{https://github.com/senchalabs/connect}
+  \item[ua-parser-js:] This is the \emph{Node.js} module that \Cree uses to identify and block the devices and web browsers used by subjects. See \url{http://faisalman.github.io/ua-parser-js/}
+  \item[underscore:] This is a \emph{Node.js} module that extends JavaScript and provides additional useful functions. See \url{http://underscorejs.org}
+  \item[ipify.org:] \Cree calls this application programming interface (API), and it returns the public URL address, ie. the URL address that subjects use when joining the experiment over the internet. See \url{https://www.ipify.org}.
+  \item[forever:] This command line tool gives \Cree its fully-continuous option described in section~\ref{SS:joining}. If experiments are started using \emph{forever} then the server simply restarts the experiment after each session, and the experiment continues until the researcher manually stops it. See \url{https://github.com/foreverjs/forever}
+  \item[Bootstrap:] \Cree uses the CSS framework \emph{Bootstrap}, which insures that pages scale seamlessly across small and big screens. In addition it ensures that pages look identical across different web browsers and devices, for given screen sizes. See \url{http://getbootstrap.com}
+  \item[jQuery:] This library extends JavaScript and provides additional useful functions to manipulate the web pages that subjects see. More specifically it is used to load new pages, and collect inputs from subjects. See \url{https://jquery.com}
+  \item[D3.js:] \Cree leverages the JavaScript library \emph{D3.js} to build graphics. \emph{D3.js} is used to build both static graphics and graphical interfaces, which subjects can interact with and provide inputs through. See \url{http://d3js.org}
 \end{description}
 
 \newpage
