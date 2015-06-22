@@ -80,7 +80,7 @@ Subjects access \Cree experiments through a web browser. Any modern web browser 
 {\bf Application:} & z-Tree, E-Prime, ESI/ICES Software \\
 {\bf Requires Python:} & UAA-PEET \\
 {\bf Requires Java:} & BoXS, EconPort, Multistage, Comlab, Aton, JessX, JAuctions, JMarkets, SWIEE \\
-{\bf Browser native:} & SoPHIE, Willow, jsPsych, Tatool, QRTEngine, WebExp, WEXTOR, VeconLab \\
+{\bf Browser native:} & SoPHIE, Willow, jsPsych, Tatool, QRTEngine, WebExp, WEXTOR, VeconLab, oTree, MWERT \\
 \end{tabular}
 \end{table}
 
@@ -96,8 +96,7 @@ Toolboxes in the third category are written in \emph{Java}. These are less restr
  
 \footnotetext[4]{Eg. due to security concerns by default the Java-plugin is disabled in Google Chrome version 42 (released April 2015). Source: \url{https://www.java.com/en/download/faq/chrome.xml}.}
 
-The fourth category of toolboxes run natively in the web browser, without the need for any browser plug-ins or predownloaded software. These toolboxes place the same low restrictions on the equipment facing subjects as \Cree. However, none of these toolboxes currently support simultaneous real-time interaction between subjects -- ie. it is impossible to design experiments where subjects continuously provide input, while continuously and simultaneously receives feedback from the other subjects. Some toolboxes support sequential decision making, while others completely lack interaction among subjects.
-
+The fourth category of toolboxes run natively in the web browser, without the need for any browser plug-ins or predownloaded software. These toolboxes place the same low restrictions on the equipment facing subjects as \Cree. However, none of these toolboxes, except \emph{MWERT}, currently support simultaneous real-time interaction between subjects -- ie. it is impossible to design experiments where subjects continuously provide input, while they continuously and simultaneously receives feedback from the other subjects. Some toolboxes support sequential decision making, while others completely lack interaction among subjects. The toolbox \emph{MWERT} is build specifically to run real-time multiplayer experiments on the internet \citep{Hawkins_2014}. It relies on many of the same basic technologies as \Cree. However it has been built from scratch to a larger extent than \Cree, which instead relies heavily on existing software libraries. This fore instance imply that researchers will have to rewrite the core of the toolbox to run experiments where more than two subjects interact simultaneously. Whereas the number of subjects is simply a parameter to be specified in \Cree experiments. \emph{MWERT} has a single stage (not considering the stage with instructions and the exit-survey), which can then be repeated a specific number of types. Whereas researchers build a list with stages in \Cree. These stages can be identical but need not be, and in between each stage the researcher can add a synchronisation step or randomisation step, such that subjects wait for other subjects to catch up, or such that subjects are shuffled among groups, roles or treatments.
 
 \section{Running experiments}
 \label{S:Running}
@@ -144,7 +143,7 @@ With numerous interconnected and simultaneously used devices, eventually a devic
 
 If subjects attempt to abort the experiment untimely, \Cree displays a warning message. The occurrences of these warning messages are logged. In addition \Cree logs when the subject's web browser is out of focus\footnotemark[7] -- this is a proxy measure for inattention. The figure below plots the session of one subject. The figure includes connection, disconnection, the stages of the experiment, and periods of inattention (areas shaded red). The full lines mark the beginning of a new stage. The dotted lines are where the subject waits for the other participant.
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
   \caption{Example of a session timeline of a subject}
   \centering
     \includegraphics[width=\textwidth]{figures/example_session}
