@@ -1,0 +1,18 @@
+{
+	"utilities": {
+		"full": "dictator1/00_full.html",
+		"lobby": "dictator1/00_wait.html",
+		"decline": "dictator1/00_decline.html",
+		"fallback": "dictator1/00_fallback.html"
+	},
+	"stages": [
+		{ "name": "instructions", "url": "dictator1/01_instructions.html" },
+		{ "type": "sync", "name": "wait", "url": "dictator1/00_wait.html" },
+		{ "name": "r1", "url": "dictator1/02_dictator.html", "script": "dictator", "method": "withinRooms" },
+		{ "name": "wait", "type": "sync", "url": "dictator1/00_wait.html" },
+		{ "type": "randomise", "name": "Randomise", "method": "withinRooms" },
+		{ "name": "r2", "url": "dictator1/02_dictator.html", "script": "dictator", "method": "withinRooms" },
+		{ "name": "pay", "url": "dictator1/03_payment.html", "script": "payment", "method": "perUser" },
+		{ "name": "thanks", "url": "dictator1/04_thanks.html" }
+	]
+}

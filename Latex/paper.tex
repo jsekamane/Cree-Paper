@@ -9,15 +9,41 @@
 \usepackage[usenames,dvipsnames]{color}
 
 % Packages
+
 \usepackage[colorlinks=true]{hyperref}
 \usepackage{xspace}
 \usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{graphicx}
 
 % Options
 \biboptions{authoryear}
 
 % Custom commands
 \newcommand{\Cree}{\emph{Cree}\xspace}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+	language=Java,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3
+}
 
 \begin{document}
 
@@ -57,12 +83,13 @@ While this paper deals with internet experiments in general, it continuously ref
 \subsection{System requirements}
 % What are the system requirements for \Cree?
 
-\Cree requires a server, ie. any computer with \emph{Node.js} installed. \Cree has several dependencies -- because it is built on general-purpose software libraries -- however all of these dependencies are automatically installed, or come pre-bundled, with \Cree. The server will need to be connected to the devices used by the subject, either through the internet or through a local network (eg. Wi-Fi). 
+\Cree requires a server, ie. any computer with \emph{Node.js} installed. \Cree has several dependencies -- because it is built on general-purpose software libraries -- however all of these dependencies are automatically installed, or come pre-bundled, with \Cree. The server will need to be connected to the devices used by the subject, either through the internet or through a local network (eg. Wi-Fi), see figure~\ref{f:network}.
 
 \begin{figure}[h!]
   \caption{Schematic overview of the network setup with server and clients}
   \centering
     \includegraphics[width=\textwidth]{figures/setup}
+  \label{f:network}
 \end{figure}
 
 Subjects access \Cree experiments through a web browser. Any modern web browser will suffice\footnotemark[1], which means that subjects can participate in experiments using smart-phones, tablets, or any computer (Windows, Mac, Linux). Every subject will need a device. The researcher can choose to provide devices, or have subjects use their own personal devices.
@@ -139,14 +166,15 @@ Both stability aspects require thorough testing and running countless experiment
 
 \footnotetext[6]{The JavaScript library \emph{jQuery} is used on 64.4\% of monitored websites. There is no statistics on the \emph{Bootstrap} CSS library, but its complementary JavaScript library is used on 7.7\% of websites. Source: \url{http://w3techs.com/technologies/overview/javascript_library/all}. While \emph{Node.js} is used as web-server on 0.1\% of monitored websites. Source: \url{http://w3techs.com/technologies/overview/web_server/all}.}
 
-With numerous interconnected and simultaneously used devices, eventually a device will malfunction or the network will suffer a temporary disturbance. \Cree handles these types of errors by allowing subjects that briefly disconnects, to reconnect and continue the experiment. Disconnects and reconnects are logged, so the researcher can later determine if it significantly impacted the results in the current stage of the experiment. \Cree does not reconnect subjects after lengthy disconnects, since this would hold up the entire experiment and adversely impact the waiting time of the other participating subjects. In these instances the experiment proceeds without the disconnected subject.
+With numerous interconnected and simultaneously used devices, eventually a device will malfunction or the network will suffer a temporary disturbance. \Cree handles these types of errors by allowing subjects that briefly disconnects, to reconnect and continue the experiment. The researcher can specify how long connections are allowed to be absent, before a subject gets kick from the experiment -- the default is 10 seconds. Disconnects and reconnects are logged, so the researcher can later determine if it significantly impacted the results in the current stage of the experiment. I do not recommend reconnecting subjects after lengthy disconnects, since this would hold up the entire experiment and adversely impact the waiting time of the other participating subjects. In these instances the experiment proceeds without the disconnected subject. When one subject disconnects from a \Cree experiment, then the other subjects in the same group are redirected to a fallback page. This page informs the subjects about the fall out and explains why they are not able to continue the experiment being one man short. The remaining groups are unaffected by the disconnect, and \Cree is still able to  synchronise and randomise among the remaining subjects and groups. The researcher will have to manually calculate payments for subjects in the group that suffered a untimely disconnect, but \Cree is still able to calculate payments for subjects in the remaining groups.
 
-If subjects attempt to abort the experiment untimely, \Cree displays a warning message. The occurrences of these warning messages are logged. In addition \Cree logs when the subject's web browser is out of focus\footnotemark[7] -- this is a proxy measure for inattention. The figure below plots the session of one subject. The figure includes connection, disconnection, the stages of the experiment, and periods of inattention (areas shaded red). The full lines mark the beginning of a new stage. The dotted lines are where the subject waits for the other participant.
+If subjects attempt to abort the experiment untimely, \Cree displays a warning message. The occurrences of these warning messages are logged. In addition \Cree logs when the subject's web browser is out of focus\footnotemark[7] -- this is a proxy measure for inattention. Figure~\ref{f:session} plots the session of one subject. The figure includes connection, disconnection, the stages of the experiment, and periods of inattention (areas shaded red). The full lines mark the beginning of a new stage. The dotted lines are where the subject waits for the other participant.
 
 \begin{figure}[ht!]
   \caption{Example of a session timeline of a subject}
   \centering
     \includegraphics[width=\textwidth]{figures/example_session}
+  \label{f:session}
 \end{figure}
 
 \footnotetext[7]{ie. when the subject is using a different tab in the web browser, when the web browser is minimised or fully obscured by another application, or when the device enters its power saving or screensaver mode (lock screen on smartphones). Source: \url{http://www.w3.org/TR/page-visibility/}}
@@ -264,7 +292,60 @@ There is a vibrant ecosystem and many general-purpose software libraries that su
 
 \section{Source code}
 
-The source code for \Cree is licensed under the MIT license and available at \url{https://github.com/jsekamane/Cree}. An example experiment of an English auction is available at \url{https://github.com/jsekamane/Cree/tree/master/examples/english-auction}. Fieldnotes for this paper is available at \url{https://github.com/jsekamane/Cree-Paper}.
+The source code for \Cree is licensed under the MIT license and available at \url{https://github.com/jsekamane/Cree}. An example experiment of an English auction is available at \url{https://github.com/jsekamane/Cree/tree/master/examples/english-auction}. And an example of a Dictator game is available at \url{https://github.com/jsekamane/Cree/tree/master/examples/dictator-game}. Fieldnotes for this paper is available at \url{https://github.com/jsekamane/Cree-Paper}.
+
+\section{Dictator game}
+
+A \Cree experiment has three main building blocks -- in this example the three files are \texttt{dictator1.json}, \texttt{dictator1.js} and \texttt{client/experiment.js}. The file \texttt{dictator1.json} specifies the structure of the experiment, ie. which page to show and when. \Cree requires some basic utilities, eg. a page to display when the experiment is full, or a fallback page in case of untimely disconnects. In addition the \texttt{dictator1.json} file lists the stages chronologically. In this example most pages are static, but a few pages have a specific \texttt{type}, that tells \Cree to synchronise subjects or randomise them. In this example, the first listed user is always the dictator, but the researcher randomise the list of users, and thus randomises who is dictator. This is done in between the two dictator-rounds (\texttt{r1}, \texttt{r2}). And the \texttt{method} specifies that the subjects should not be match with new subjects, but that subjects should shuffle only within their current groups. Static pages may have a \texttt{script} that is executed once a user reaches the stage, or once all users reach the stage -- this is again determined by the \texttt{method}.
+
+\lstinputlisting[caption={The structure of the experiment -- \texttt{dictator1.json}},label=json]{listings/dictator1.json}
+%\lstinputlisting[caption={The server script -- \texttt{dictator1.js}},label=server]{listings/dictator1.js}
+%\lstinputlisting[caption={The client script -- \texttt{client/experiment.js}},label=client]{listings/client_experiment.js}
+
+The file \texttt{dictator1.js} is the server script that controls the experiment. The file contains several parameters that configurates the experiment, such as the boolean \texttt{autoJoinLobby} and integer \texttt{membersPerRoom}. In addition it contains the scripts called from the \texttt{dictator1.json} file. Below is a snippet of the \texttt{dictator}-script which is called in the beginning of each of the two rounds. It loops through all subjects in the specific group and sends the \texttt{choose}-split message to the first subject on the list, while the other subject gets a \texttt{wait}-for-split message.
+
+\begin{lstlisting}[caption={Snippet from the server script -- \texttt{dictator1.js}},label=server]
+global.dictator = function(stage, room){
+	// There are only two subjects. The first subject is always the dictator.
+	for(var key in room.getMembers()) {
+		var user = cree.cloak.getUser(room.getMembers()[key].id);
+		if(key == 0) user.message("choose"); // Tell user to chose a split
+		else user.message("wait"); // Tell user to wait for split
+	}
+}
+\end{lstlisting}
+
+The last file \texttt{client/experiment.js} is the client script. It receives messages from the server and changes the subjects' page accordantly, see figure~\ref{f:screens}. Fore instance displaying a slider to the ``dictator'' from which he or her can choose a split. Once this is done and the subject submits his or her choice, then the \texttt{client/experiment.js} file sends a \texttt{split} message return to the server, with the amount chosen by the subject, see listing~\ref{client}.
+
+\begin{figure}[h!]
+	\caption{The screens of respectively the ``dictator'' and the other subject}
+	\centering
+	\begin{subfigure}[b]{0.485\textwidth}
+		\caption{The screen of the ``dictator''.}
+		\includegraphics[width=\textwidth]{figures/screen_dictator.png}
+		\label{f:screen_dictator}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.485\textwidth}
+		\caption{The screen of the other subject.}
+		\includegraphics[width=\textwidth]{figures/screen_other.png}
+		\label{f:screen_other}
+	\end{subfigure}
+	\label{f:screens}
+\end{figure}
+
+\begin{lstlisting}[caption={Snippet from the client script -- \texttt{client/experiment.js}},label=client]
+$(document).ready(function(event) { 
+	$('#container').on('submit', '#input-form', function(){
+		var amount = Number($('#slider input').val());
+		cloak.message('split', amount);
+		return false;
+	});
+});
+\end{lstlisting}
+
+This is how the three main building blocks of a \Cree experiment work in tandem. \texttt{dictator1.json} contains the structure and road-map of the experiment. \Cree reads this road-map and the configurations in \texttt{dictator1.js} and sends messages to the client. The \texttt{client/experiment.js} file catches these messages, adjusts pages, waits for input from subjects, and then sends a return message. In sum, \Cree is a framework that provides the tools to handle many of the otherwise mundane, complicated or manually tasks required to set up and run economic experiments. And the researcher can focus on the particulars of the specific experiment.
+
 
 \newpage
 
