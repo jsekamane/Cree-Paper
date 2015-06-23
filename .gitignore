@@ -15,3 +15,4 @@ Latex/*.log
 Latex/*.out
 Latex/*.spl
 Latex/*.gz
+Latex/*.toc
